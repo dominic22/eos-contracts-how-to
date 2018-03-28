@@ -15,15 +15,7 @@ const state:any = {
     },
     connectionTimeout: 5000,
     getInfo: null,
-    endpoints: [
-        {url: 'http://t1readonly.eos.io', ping: 0, lastConnection: 0},
-    ],
     currentEndpoint: {url: 'http://t1readonly.eos.io', ping: 0, lastConnection: 0},
-    endpointConnectionStatus: 10,
-    endpointRefreshInterval: 5000,
-    currentMatch: {opponent: null, matchid: null, host: null},
-    matchRequests: [],
-    matchRequested: [],
 };
 
 // import val from 'validator'
@@ -56,11 +48,11 @@ const actions = {
             }
         })
     },
-    findAccount (account) {
+    findAccount (accountName) {
         // This method may be used to check if a account exists
         return new Promise((resolve, reject) => {
             var eos = Eos.Testnet(state.eosconfig);
-            eos.getAccount({account_name: account}).then((res) => {
+            eos.getAccount({account_name: accountName}).then((res) => {
                 console.log('ACCOUNT_FOUND');
                 resolve(res)
             }, (err) => {
@@ -94,10 +86,31 @@ const actions = {
             var eos = Eos.Testnet(state.eosconfig);
             eos.contract('tic.tac.toe').then(ticTacToe => {
                 console.log(ticTacToe);
-            });
+            })
+            // var eos = Eos.Testnet(state.eosconfig);
+            // eos.getAccount({account_name: host}).then((res) => {
+            //     console.log('HOST_FOUND');
+            //     resolve(res)
+            // }, (err) => {
+            //     if (err) {
+            //         reject(Error('HOST notFound'))
+            //     }
+            // });
+            // eos.getAccount({account_name: challenger}).then((res) => {
+            //     resolve(res)
+            // }, (err) => {
+            //     if (err) {
+            //         reject(Error('notFound'))
+            //     }
+            // });
+            // eos.contract('tic_tac_toe').then(currency => {
+            //     // Transfer is one of the actions in currency.abi
+            //     currency.create('inita', 'initb');
+            // })
+
         })
     },
 };
 
 // you can use this to call actions in the console of the browser
-window.actions = actions;
+(window as any).actions = actions;

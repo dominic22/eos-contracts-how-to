@@ -2,11 +2,7 @@ import * as React from "react";
 import * as ReactDOM from 'react-dom';
 import * as eos from './eos';
 
-
-console.log('STAAAAAAAATE');
-console.log('STAAAAAAAATE11');
-console.log('STAAAAAAAATE11');
-console.log(eos.state);
+// TODO remove 
 console.log(eos.actions.pingEndpoint());
 console.log(eos.actions.findAccount('globalone'));
 

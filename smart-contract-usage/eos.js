@@ -11,15 +11,7 @@ var state = {
     },
     connectionTimeout: 5000,
     getInfo: null,
-    endpoints: [
-        { url: 'http://t1readonly.eos.io', ping: 0, lastConnection: 0 },
-    ],
-    currentEndpoint: { url: 'http://t1readonly.eos.io', ping: 0, lastConnection: 0 },
-    endpointConnectionStatus: 10,
-    endpointRefreshInterval: 5000,
-    currentMatch: { opponent: null, matchid: null, host: null },
-    matchRequests: [],
-    matchRequested: []
+    currentEndpoint: { url: 'http://t1readonly.eos.io', ping: 0, lastConnection: 0 }
 };
 // import val from 'validator'
 var actions = {
@@ -52,11 +44,11 @@ var actions = {
             }
         });
     },
-    findAccount: function (account) {
+    findAccount: function (accountName) {
         // This method may be used to check if a account exists
         return new Promise(function (resolve, reject) {
             var eos = Eos.Testnet(state.eosconfig);
-            eos.getAccount({ account_name: account }).then(function (res) {
+            eos.getAccount({ account_name: accountName }).then(function (res) {
                 console.log('ACCOUNT_FOUND');
                 resolve(res);
             }, function (err) {
@@ -91,6 +83,26 @@ var actions = {
             eos.contract('tic.tac.toe').then(function (ticTacToe) {
                 console.log(ticTacToe);
             });
+            // var eos = Eos.Testnet(state.eosconfig);
+            // eos.getAccount({account_name: host}).then((res) => {
+            //     console.log('HOST_FOUND');
+            //     resolve(res)
+            // }, (err) => {
+            //     if (err) {
+            //         reject(Error('HOST notFound'))
+            //     }
+            // });
+            // eos.getAccount({account_name: challenger}).then((res) => {
+            //     resolve(res)
+            // }, (err) => {
+            //     if (err) {
+            //         reject(Error('notFound'))
+            //     }
+            // });
+            // eos.contract('tic_tac_toe').then(currency => {
+            //     // Transfer is one of the actions in currency.abi
+            //     currency.create('inita', 'initb');
+            // })
         });
     }
 };
