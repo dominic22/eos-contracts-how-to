@@ -25,6 +25,7 @@ const state:any = {
 // import val from 'validator'
 const actions = {
     pingEndpoint() {
+        //This method may be used to check if the testnet url is correct
         return new Promise((resolve, reject) => {
             if (state.currentEndpoint !== null) {
                 console.log('MYSTATE', state.eosconfig);
@@ -52,6 +53,7 @@ const actions = {
         })
     },
     findAccount (account) {
+        // This method may be used to check if a account exists
         return new Promise((resolve, reject) => {
             var eos = Eos.Testnet(state.eosconfig);
             eos.getAccount({account_name: account}).then((res) => {
@@ -64,41 +66,42 @@ const actions = {
             })
         })
     },
-    createGame (host, challenger) {
+    transfer () {
+        // This method may be used to move tokens between two accounts
         return new Promise((resolve, reject) => {
-            // Private key..
+            var publicKeyHost = '';
+            var privateKeyHost = '';
             const keyProvider = [
-                '5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3',
-                Eos.modules.ecc.seedPrivate('currency')
+                privateKeyHost,
             ];
-
             var eos = Eos.Testnet({keyProvider})
-
-            // var eos = Eos.Testnet(state.eosconfig);
-            // eos.getAccount({account_name: host}).then((res) => {
-            //     console.log('HOST_FOUND');
-            //     resolve(res)
-            // }, (err) => {
-            //     if (err) {
-            //         reject(Error('HOST notFound'))
-            //     }
-            // });
-            // eos.getAccount({account_name: challenger}).then((res) => {
-            //     resolve(res)
-            // }, (err) => {
-            //     if (err) {
-            //         reject(Error('notFound'))
-            //     }
-            // });
-            eos.contract('currency').then(currency => {
-                // Transfer is one of the actions in currency.abi
-                currency.transfer('currency', 'inita', 100)
+            eos.transfer({
+                "from": "globalone",
+                "to": "dominic22",
+                "amount": "2",
+                "memo": ""
+            }).then(transaction => {
+                console.log(transaction);
+            }, (err) => {
+            if (err) {
+                reject(Error('error during transaction!'))
+            }
+            });
+        })
+    },
+    createGame () {
+        // This method may be used to create a new game using the tic.tac.toe contract
+        return new Promise((resolve, reject) => {
+            var publicKeyHost = '';
+            var privateKeyHost = '';
+            const keyProvider = [
+                privateKeyHost,
+                // Eos.modules.ecc.seedPrivate('currency')
+            ];
+            var eos = Eos.Testnet({keyProvider})
+            eos.contract('tic.tac.toe').then(ticTacToe => {
+                console.log(ticTacToe);
             })
-            // eos.contract('tic_tac_toe').then(currency => {
-            //     // Transfer is one of the actions in currency.abi
-            //     currency.create('inita', 'initb');
-            // })
-
         })
     },
 };
