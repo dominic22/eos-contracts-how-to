@@ -1,0 +1,25 @@
+{
+  "name": "smart-contract-usage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "eos.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w eos.ts",
+    "lite": "lite-server",
+    "start": "concurrently \"npm run tsc:w\" \"npm run lite\" "
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/es6-promise": "^3.3.0",
+    "concurrently": "^3.5.1",
+    "lite-server": "^2.3.0",
+    "typescript": "^2.7.2"
+  },
+  "dependencies": {
+    "eosjs": "^6.1.11",
+    "webpack": "^4.3.0"
+  }
+}

@@ -2,15 +2,34 @@
   "name": "intro-tutorial",
   "version": "0.1.0",
   "private": true,
+  "compilerOptions": {
+    "target": "ES6"
+  },
   "dependencies": {
+    "@types/react": "^16.0.41",
+    "@types/react-dom": "^16.0.4",
+    "css-loader": "^0.28.11",
+    "eosjs": "^6.1.11",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-scripts": "1.1.1"
+    "react-scripts": "1.1.1",
+    "style-loader": "^0.20.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "tsc src/eos.ts&&webpack&&react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w src/eos.ts",
+    "lite": "lite-server",
+    "start": "webpack&&concurrently \"npm run tsc:w\" \"npm run lite\" "
+  },
+  "devDependencies": {
+    "@types/es6-promise": "^3.3.0",
+    "awesome-typescript-loader": "^4.0.1",
+    "concurrently": "^3.5.1",
+    "lite-server": "^2.3.0",
+    "source-map-loader": "^0.2.3",
+    "typescript": "^2.7.2"
   }
 }
