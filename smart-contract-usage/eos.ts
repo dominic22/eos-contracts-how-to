@@ -1,8 +1,12 @@
 declare var Eos;
 declare var Promise:any;
 
+// TODO put your private key here
+const PRIVATE_KEY = '';
+
 const state:any = {
     eosconfig: {
+        keyProvider: [PRIVATE_KEY],
         httpEndpoint: 'http://t1readonly.eos.io',
         expireInSeconds: 60,
         broadcast: true,
@@ -69,12 +73,7 @@ const actions = {
     transfer () {
         // This method may be used to move tokens between two accounts
         return new Promise((resolve, reject) => {
-            var publicKeyHost = '';
-            var privateKeyHost = '';
-            const keyProvider = [
-                privateKeyHost,
-            ];
-            var eos = Eos.Testnet({keyProvider})
+            var eos = Eos.Testnet(state.eosconfig);
             eos.transfer({
                 "from": "globalone",
                 "to": "dominic22",
@@ -92,16 +91,10 @@ const actions = {
     createGame () {
         // This method may be used to create a new game using the tic.tac.toe contract
         return new Promise((resolve, reject) => {
-            var publicKeyHost = '';
-            var privateKeyHost = '';
-            const keyProvider = [
-                privateKeyHost,
-                // Eos.modules.ecc.seedPrivate('currency')
-            ];
-            var eos = Eos.Testnet({keyProvider})
+            var eos = Eos.Testnet(state.eosconfig);
             eos.contract('tic.tac.toe').then(ticTacToe => {
                 console.log(ticTacToe);
-            })
+            });
         })
     },
 };
