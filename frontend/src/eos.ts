@@ -2,7 +2,7 @@ import * as Eos from 'eosjs';
 declare var Promise:any;
 
 // TODO put your private key here
-const PRIVATE_KEY = '';
+const PRIVATE_KEY = '5KPsCebAhMM7DUzaXR51rYoj7Ey5c1tyNi8A1vUScacDbbwdA9g';
 
 const state:any = {
     eosconfig: {
