@@ -6,12 +6,12 @@
     "target": "ES6"
   },
   "dependencies": {
-    "@types/react": "^16.0.41",
-    "@types/react-dom": "^16.0.4",
+    "@types/react": "^16.4.7",
+    "@types/react-dom": "^16.0.6",
     "css-loader": "^0.28.11",
-    "eosjs": "^6.1.11",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "eosjs": "^16.0.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
     "react-scripts": "1.1.1",
     "style-loader": "^0.20.3"
   },
@@ -27,9 +27,9 @@
   "devDependencies": {
     "@types/es6-promise": "^3.3.0",
     "awesome-typescript-loader": "^4.0.1",
-    "concurrently": "^3.5.1",
-    "lite-server": "^2.3.0",
+    "concurrently": "^3.6.1",
+    "lite-server": "^2.4.0",
     "source-map-loader": "^0.2.3",
-    "typescript": "^2.7.2"
+    "typescript": "^2.9.2"
   }
 }

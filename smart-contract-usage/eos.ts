@@ -1,22 +1,26 @@
 declare var Eos;
 declare var Promise:any;
+console.log(Eos)
 
 // TODO put your private key here
-const PRIVATE_KEY = '';
+const PRIVATE_KEY = '5KKfXuq9WzimipbjVt99g4a7Vao7FYodAKqfmjaneGBqQuEVA7L';
+
+// A simple tutorial on using Scatter to interact with the EOS ecosystem
+// https://steemit.com/eos/@ajose01/eos-and-scatter-part-1
 
 const state:any = {
     eosconfig: {
         keyProvider: [PRIVATE_KEY],
-        httpEndpoint: 'http://t1readonly.eos.io',
+        httpEndpoint: 'http://jungle.cryptolions.io:18888',
+        chainId:'038f4b0fc8ff18a4f0842a8f0564611f6e96e8535901dd45e43ac8691a1c4dca',
         expireInSeconds: 60,
         broadcast: true,
+        verbose: false, // API activity
         debug: false,
-        sign: true,
-        scope: ['dominic22', 'globalone'].sort()
+        sign: true,/*
+        scope: ['globalone222'].sort(),
+        authorization: 'globalone222@active'*/
     },
-    connectionTimeout: 5000,
-    getInfo: null,
-    currentEndpoint: {url: 'http://t1readonly.eos.io', ping: 0, lastConnection: 0},
 };
 
 // import val from 'validator'
@@ -26,7 +30,7 @@ const actions = {
         return new Promise((resolve, reject) => {
             if (state.currentEndpoint !== null) {
                 console.log('MYSTATE', state.eosconfig);
-                var eos = Eos.Testnet(state.eosconfig);
+                var eos = Eos(state.eosconfig);
                 var pingStart = new Date().getTime();
                 var timeout = setTimeout(function () {
                     reject(Error('timeout'));
@@ -52,7 +56,7 @@ const actions = {
     findAccount (accountName) {
         // This method may be used to check if a account exists
         return new Promise((resolve, reject) => {
-            var eos = Eos.Testnet(state.eosconfig);
+            var eos = Eos(state.eosconfig);
             eos.getAccount({account_name: accountName}).then((res) => {
                 console.log('ACCOUNT_FOUND');
                 resolve(res)
@@ -66,14 +70,21 @@ const actions = {
     transfer () {
         // This method may be used to move tokens between two accounts
         return new Promise((resolve, reject) => {
-            var eos = Eos.Testnet(state.eosconfig);
+            let eos = Eos(state.eosconfig);
+            let options = {
+                authorization: 'globalone222@active',
+                broadcast: true,
+                sign: true
+              }
             eos.transfer({
-                "from": "globalone",
-                "to": "dominic22",
-                "amount": "2",
+                "from": "globalone222",
+                "to": "dominic22222",
+                "quantity": "2.0000 EOS",
                 "memo": ""
-            }).then(transaction => {
+            })
+            .then(transaction => {
                 console.log(transaction);
+                resolve(transaction)
             }, (err) => {
             if (err) {
                 reject(Error('error during transaction!'))
@@ -84,7 +95,7 @@ const actions = {
     createGame () {
         // This method may be used to create a new game using the tic.tac.toe contract
         return new Promise((resolve, reject) => {
-            var eos = Eos.Testnet(state.eosconfig);
+            var eos = Eos(state.eosconfig);
             // try to access contract working at all
             /*eos.contract('tic.tac.toe').then(ticTacToe => {
                 console.log(ticTacToe);
@@ -121,7 +132,7 @@ const actions = {
                 });
             })
         })
-    },
+    }
 };
 
 // you can use this to call actions in the console of the browser

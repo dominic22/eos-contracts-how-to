@@ -14,12 +14,13 @@
   "license": "ISC",
   "devDependencies": {
     "@types/es6-promise": "^3.3.0",
-    "concurrently": "^3.5.1",
-    "lite-server": "^2.3.0",
-    "typescript": "^2.7.2"
+    "concurrently": "^3.6.1",
+    "lite-server": "^2.4.0",
+    "typescript": "^2.9.2"
   },
   "dependencies": {
-    "eosjs": "^6.1.11",
-    "webpack": "^4.3.0"
+    "eosjs": "^16.0.0",
+    "typescript-require": "^0.2.10",
+    "webpack": "^4.16.3"
   }
 }
