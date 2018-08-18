@@ -12,7 +12,9 @@ var state = {
         broadcast: true,
         verbose: false,
         debug: false,
-        sign: true
+        sign: true,
+        scope: ['globalone222', 'dominic22222'].sort(),
+        authorization: 'globalone222@active'
     }
 };
 // import val from 'validator'
@@ -102,12 +104,12 @@ var actions = {
                             code: 'tic.tac.toe',
                             type: 'create',
                             authorization: [{
-                                    account: 'dominic22',
+                                    account: 'globalone222',
                                     permission: 'active'
                                 }],
                             data: {
-                                challenger: 'globalone',
-                                host: 'dominic22'
+                                challenger: 'dominic22222',
+                                host: 'globalone222'
                             }
                         }
                     ]

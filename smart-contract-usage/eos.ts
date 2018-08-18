@@ -3,7 +3,7 @@ declare var Promise:any;
 console.log(Eos)
 
 // TODO put your private key here
-const PRIVATE_KEY = '5KKfXuq9WzimipbjVt99g4a7Vao7FYodAKqfmjaneGBqQuEVA7L';
+const PRIVATE_KEY = '';
 
 // A simple tutorial on using Scatter to interact with the EOS ecosystem
 // https://steemit.com/eos/@ajose01/eos-and-scatter-part-1
@@ -17,9 +17,9 @@ const state:any = {
         broadcast: true,
         verbose: false, // API activity
         debug: false,
-        sign: true,/*
-        scope: ['globalone222'].sort(),
-        authorization: 'globalone222@active'*/
+        sign: true,
+        scope: ['globalone222', 'dominic22222'].sort(),
+        authorization: 'globalone222@active'
     },
 };
 
@@ -109,12 +109,12 @@ const actions = {
                       code: 'tic.tac.toe',
                       type: 'create',
                       authorization: [{
-                        account: 'dominic22',
+                        account: 'globalone222',
                         permission: 'active'
                       }],
                       data: {
-                          challenger: 'globalone',
-                          host: 'dominic22'
+                          challenger: 'dominic22222',
+                          host: 'globalone222'
                       }
                     }
                   ]

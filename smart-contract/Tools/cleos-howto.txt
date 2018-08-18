@@ -1,0 +1,18 @@
+
+1. Create Wallet
+cleos wallet create
+
+2. Create Specific Wallet
+cleos wallet create -n globalone
+
+3. Import Key
+cleos wallet import --private-key 5KKfXuq9WzimipbjVt99g4a7Vao7FYodAKqfmjaneGBqQuEVA7L -n globalone
+
+4. Start Keosd to store private keys
+keosd
+
+5. Transfer some EOS to test
+cleos --url=http://jungle.cryptolions.io:18888 --wallet-url=http://127.0.0.1:8900 transfer globalone222 dominic22222 "3.5000 EOS" "hello world"
+
+6. Create alias 
+=> Though you don't need to put url and wallet-url each time

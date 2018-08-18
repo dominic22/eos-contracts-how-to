@@ -19,6 +19,7 @@
     "typescript": "^2.9.2"
   },
   "dependencies": {
+    "binaryen": "^37.0.0",
     "eosjs": "^16.0.0",
     "typescript-require": "^0.2.10",
     "webpack": "^4.16.3"

@@ -1,0 +1,44 @@
+This tool is used to compile your C++ contract.
+
+Clone github Repo an follow instructions:
+
+https://github.com/EOSIO/eosio.wasmsdk
+
+
+Error:
+
+eosio-cpp -o hello.wast hello.cpp 
+
+In file included from hello.cpp:1:
+In file included from /usr/local/eosio.wasmsdk/bin/../include/eosiolib/eosio.hpp:7:
+In file included from /usr/local/eosio.wasmsdk/bin/../include/eosiolib/action.hpp:7:
+/usr/local/eosio.wasmsdk/bin/../include/eosiolib/datastream.hpp:9:10: fatal error: 'boost/container/flat_set.hpp' file not found
+#include <boost/container/flat_set.hpp>
+         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+
+
+According to: https://github.com/EOSIO/eosio.wasmsdk/issues/30
+
+1. Get boost 1.67 here:
+
+https://www.boost.org/doc/libs/1_67_0/more/getting_started/unix-variants.html
+
+2. Move the zip file to /usr/local
+
+sudo mv boost_1_67_0.tar.bz2 /usr/local/
+
+3. Decompress the zip
+
+sudo tar --bzip2 -xf boost_1_67_0.tar.bz2
+
+
+4. Copy resulting boost folder into eoswasm include folder
+
+- Copy the boost folder which is inside the boost_1_67_0 folder into the eosio.wasmsdk/includes folder. Hence run following command in /usr/local
+
+sudo cp -r boost_1_67_0/boost /usr/local/eosio.wasmsdk/include/boost
+
+5. Rerun your contract by using eosio-cpp
+
+eosio-cpp -o hello.wast hello.cpp 
