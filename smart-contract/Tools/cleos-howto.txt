@@ -1,4 +1,46 @@
 
+----------------------------- Prerequisites ----------------------------- 
+
+
+cleos-jungle is a bash alias for
+cleos --url=http://jungle.cryptolions.io:18888
+
+You can do by adding the following command to the .bash_aliases in the home directory
+alias cleos-jungle='/usr/local/eosio/bin/cleos --url=http://jungle.cryptolions.io:18888
+
+
+----------------------------- Smart Contracts ----------------------------- 
+
+
+Hello Contract
+
+Deploy
+cleos-jungle set contract globalone222 ../hello -p globalone222@active
+(globalone222 is account of the smart contract)
+
+Usage
+cleos-jungle push action globalone222 hi '["antonio"]' -p globalone222@active
+
+
+KingOfEos Contract
+
+Deploy
+cleos-jungle set contract globalone222 ../kingofeos -p globalone222@active
+
+Init
+cleos-jungle push action globalone222 init '["globalone222"]' -p globalone222@active
+
+Claim Kingdom
+cleos-jungle transfer dominic22222 globalone222 "1.3500 EOS" ";;"
+or use:
+cleos push action eosio.token transfer '["dominic2222", "eoskingofeos", "1.3500 EOS", "Dominic\'s Kingdom;;" ]' -p dominic2222
+...
+cleos-jungle transfer globalone221 globalone222 "1.8225 EOS" "Globalone's Kingdom;;"
+cleos-jungle transfer globalone221 globalone222 "1.8225 EOS" ";;"
+
+
+----------------------------- CLEOS Commands ----------------------------- 
+
 1. Create Wallet
 cleos wallet create
 
@@ -16,3 +58,12 @@ cleos --url=http://jungle.cryptolions.io:18888 --wallet-url=http://127.0.0.1:890
 
 6. Create alias 
 => Though you don't need to put url and wallet-url each time
+
+Buy RAM
+cleos-jungle system buyram globalone222 globalone222 "20 EOS"
+
+List wallet
+cleos-jungle wallet list
+
+
+--------------------------------------------------------------------------- 
